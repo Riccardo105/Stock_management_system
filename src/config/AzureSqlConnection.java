@@ -16,6 +16,7 @@ public class AzureSqlConnection {
             Configuration configuration = new Configuration();
             // env variables setup through RUN->EDIT CONFIG
             String databaseURL = System.getenv("AZURE_SQL_URL");
+            databaseURL = databaseURL.replace("|", ";");
 
             configuration.setProperty("hibernate.connection.driver_class", "com.microsoft.sqlserver.jdbc.SQLServerDriver");
             configuration.setProperty("hibernate.connection.url", databaseURL);
@@ -23,6 +24,7 @@ public class AzureSqlConnection {
             sessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
+
             throw new ExceptionInInitializerError(ex);
         }
     }
