@@ -1,9 +1,19 @@
 package model.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "audioBook")
+@PrimaryKeyJoinColumn(name = "id")
 public class AudioBookDTO extends BookDTO {
     private String narrator;
     private float fileSize;
     private String fileFormat;
+
+    // no argument constructor required by JPA
+    protected AudioBookDTO() {}
 
     private AudioBookDTO(Builder builder) {
         super(builder);

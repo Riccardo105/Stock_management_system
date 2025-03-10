@@ -1,9 +1,19 @@
 package model.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "digital")
+@PrimaryKeyJoinColumn(name = "id")
 public class DigitalDTO extends MusicDTO{
     private String fileFormat;
     private float fileSize;
     private int bitrateMbps;
+
+    // no argument constructor required by JPA
+    protected DigitalDTO() {}
 
     private DigitalDTO(Builder builder){
         super(builder);

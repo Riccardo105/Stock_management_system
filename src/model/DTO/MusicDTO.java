@@ -1,4 +1,8 @@
 package model.DTO;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
 import java.sql.Date;
 import java.sql.Time;
 
@@ -6,6 +10,9 @@ import java.sql.Time;
  * MusicDTO represents music table in Database
  * functionality is the same as the ProductDTO but with added attributes (to reflect Database normalization)
  */
+@Entity
+@Table(name = "music")
+@PrimaryKeyJoinColumn(name = "id")
 public abstract class MusicDTO extends ProductDTO {
         private String format;
         private String Artist;
@@ -14,6 +21,9 @@ public abstract class MusicDTO extends ProductDTO {
         private Date releaseDate;
         private Time playTime;
         private int tracksNum;
+
+    // no argument constructor required by JPA
+    protected MusicDTO() {}
 
         protected MusicDTO(Builder<?> builder) {
             super(builder);

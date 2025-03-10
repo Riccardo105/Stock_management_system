@@ -1,9 +1,19 @@
 package model.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table( name = "CD")
+@PrimaryKeyJoinColumn(name = "id")
 public class CdDTO extends MusicDTO {
     private int numOfDiscs;
     private String conditions;
     private int bitrateMbps;
+
+    // no argument constructor required by JPA
+    protected CdDTO() {}
 
     private CdDTO (Builder builder) {
         super(builder);

@@ -1,9 +1,19 @@
 package model.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "vinyl")
+@PrimaryKeyJoinColumn(name = "id")
 public class VinylDTO extends MusicDTO {
     private int rpm;
     private int size;
     private String edition;
+
+    // no argument constructor required by JPA
+    protected VinylDTO() {}
 
     private VinylDTO(Builder builder) {
         super(builder);

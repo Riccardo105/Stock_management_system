@@ -1,15 +1,26 @@
 package model.DTO;
 
 
+import jakarta.persistence.*;
+
 /** ProductDTO represent the product table in the Database.
  * Stock, buyingPrice and sellingPrice are the only mutable fields (through setter)
  */
+@Entity
+@Table(name = "product")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class ProductDTO {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private int stock;
     private float buyingPrice;
     private float sellingPrice;
+
+    // no argument constructor required by JPA
+    protected ProductDTO() {}
 
     /**
      * object creation enforced through builder

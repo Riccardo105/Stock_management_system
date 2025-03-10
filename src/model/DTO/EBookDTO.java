@@ -1,9 +1,20 @@
 package model.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table (name = "eBook")
+@PrimaryKeyJoinColumn(name = "id")
 public class EBookDTO extends BookDTO{
     private float fileSize;
     private String fileFormat;
     private int numPages;
+
+
+    // no argument constructor required by JPA
+    protected EBookDTO() {}
 
     private EBookDTO(Builder builder) {
         super(builder);

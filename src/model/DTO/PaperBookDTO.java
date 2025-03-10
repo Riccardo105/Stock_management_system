@@ -1,9 +1,19 @@
 package model.DTO;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "paperBook")
+@PrimaryKeyJoinColumn(name = "id")
 public class PaperBookDTO extends BookDTO {
     private String bindingType;
     private int numPages;
     private String edition;
+
+    // no argument constructor required by JPA
+    protected PaperBookDTO() {}
 
     private PaperBookDTO( Builder builder){
         super(builder);

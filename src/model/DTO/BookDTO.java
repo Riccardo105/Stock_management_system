@@ -1,10 +1,17 @@
 package model.DTO;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
 import java.sql.Date;
 
 /**
  * BookDTO represents book table in Database
  * functionality is the same as the ProductDTO but with added attributes (to reflect Database normalization)
  */
+@Entity
+@Table(name = "book")
+@PrimaryKeyJoinColumn(name = "id")
 public abstract class BookDTO extends ProductDTO{
     private String format;
     private String author;
@@ -12,6 +19,9 @@ public abstract class BookDTO extends ProductDTO{
     private String genre;
     private String series;
     private Date releaseDate;
+
+    // no argument constructor required by JPA
+    protected BookDTO() {}
 
     protected BookDTO(Builder<?> builder) {
         super(builder);
