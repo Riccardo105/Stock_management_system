@@ -1,11 +1,18 @@
 package config;
-import org.junit.jupiter.api.Test;  // JUnit 5 annotation
+import org.hibernate.Session;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AzureSqlConnectionTest {
+class AzureSqlConnectionIntegrationTest {
 
+    /**
+     * Session factory should open session upon request.
+     * This assumes unit test was passed already and factory connects to database successfully
+     */
     @Test
-    public void initializeSingleToneSessionFactory() {
-
+    public void SessionFactoryShouldOpenSessionUponRequest() {
+            Session session = AzureSqlConnection.getSession();
+            System.out.println(session);
+            assertNotNull(session);
     }
 }
