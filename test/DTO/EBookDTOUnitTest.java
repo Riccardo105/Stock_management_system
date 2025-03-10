@@ -4,7 +4,7 @@ import model.DTO.EBookDTO;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EBookUnitTest implements ProductsTestsInterface<EBookDTO> {
+public class EBookDTOUnitTest implements ProductsTestsInterface<EBookDTO> {
 
     @Override
     public EBookDTO createTestProductUtility() {
